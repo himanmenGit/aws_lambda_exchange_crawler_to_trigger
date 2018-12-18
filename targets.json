@@ -1,0 +1,7 @@
+[
+  {
+    "Id": "1",
+    "Arn": "<람다 함수의 arn>(arn:aws:lambda:ap-northeast-2:123456789:function:함수이름)"
+  }
+]
+
