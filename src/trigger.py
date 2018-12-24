@@ -4,7 +4,7 @@ BITHUMB = 'bithumb'
 COINONE = 'coinone'
 
 
-def test_func(event, context):
+def trigger_func(event, context):
     lambda_list = [
         BITHUMB, COINONE
     ]

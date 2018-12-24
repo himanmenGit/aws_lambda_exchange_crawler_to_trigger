@@ -31,6 +31,21 @@
 * `build-trigger-package`는 프로젝트를 s3에 올리기 위해 `trigger.zip`으로 프로젝트를 압축함
 * `make-trigger-s3-upload`는 처음시작시 디렉터리구조와 종속파일을 받아 압축하여 s3에 업로드 함. `--profile` 설정 해야함.
 
+* `make docker-run`을 실행시 `aws credential`이 없기 때문에 도커로 테스트가 힘들다 
+* 이를 해결 하기 위해 `docker-compose.yml`에 `env_file` 속성을 사용하여 `aws credential`을 넣어 보자
+* 최상위 폴더에 `.aws.env` 을 만들고 자격증명 키를 넣는다
+ 
+# 중요!!!!!
+# 세번 읽으시오!
+## 여기서 중요한것 `.gitignore`에 해당 파일을 추가하여 깃에 올리지 말것!!!!!!!
+`.aws.env`를 ignore 시킨다. 해당 저장소는 설명을 위해 삽입 한것. 
+`.aws.env`파일을 보면
+```bash
+AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+AWS_SECRET_ACCESS_KEY=<AWSSECRET_ACCESS_KEY>
+AWS_DEFAULT_REGION=<REGION_NAME>
+```
+도커의 환경변수를 `env_file`로 파일을 읽어와 사용하게 한다.
 
 ## create_lambda.sh
 * 람다 함수를 만들기 위한 자동화 파일.
